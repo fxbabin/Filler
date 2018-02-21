@@ -6,16 +6,20 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/20 23:01:14 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/21 22:28:51 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILLER			= fbabin.filler
+VISU			= visu
 
 CC				= gcc
 CFLAGS			= -Wall -Werror -Wextra
 
-_SRCS			=	filler.c \
+#_SRCS			= \
+
+_F_SRCS			=	filler.c
+_V_SRCS			=	visu.c 
 
 _LIBFT			=	libft.a
 HEADER_DIR		=	includes
@@ -23,9 +27,11 @@ HEADER			=	$(HEADER_DIR)/filler.h
 
 SRCS_DIR		= .
 LIB_DIR			= libft
-SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
+F_SRCS			= $(addprefix $(SRCS_DIR)/, $(_F_SRCS))
+V_SRCS			= $(addprefix $(SRCS_DIR)/, $(_V_SRCS))
 LIBFT			= $(addprefix $(LIB_DIR)/, $(_LIBFT))
-OBJS			= $(SRCS:.c=.o)
+F_OBJS			= $(F_SRCS:.c=.o)
+V_OBJS			= $(V_SRCS:.c=.o)
 
 #COLORS
 _CYAN=\x1b[36m
@@ -33,11 +39,15 @@ _GREEN=\x1b[32m
 _YELLOW=\x1b[33m
 _END=\x1b[0m
 
-all: $(FILLER)
+all: $(FILLER) $(VISU)
 
-$(FILLER): $(HEADER) $(LIBFT) $(OBJS)
-		@$(CC) $(CFLAGS) -o $(FILLER) $(OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
+$(FILLER): $(HEADER) $(LIBFT) $(F_OBJS)
+		@$(CC) $(CFLAGS) -o $(FILLER) $(F_OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
 		@echo "$(FILLER) : $(_GREEN)Done$(_END)"
+
+$(VISU): $(HEADER) $(LIBFT) $(V_OBJS)
+		@$(CC) $(CFLAGS) -o $(VISU) $(V_OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
+		@echo "$(VISU) : $(_GREEN)Done$(_END)"
 
 $(LIBFT):
 		@make -C $(LIB_DIR)
@@ -47,11 +57,11 @@ $(LIBFT):
 
 clean:
 		@make fclean -C $(LIB_DIR)
-		@/bin/rm -f $(OBJS)
+		@/bin/rm -f $(F_OBJS) $(V_OBJS)
 		@echo "filler clean : $(_GREEN)Done$(_END)"
 
 fclean: clean
-		@/bin/rm -f $(FILLER)
+		@/bin/rm -f $(FILLER) $(VISU)
 		@echo "filler fclean : $(_GREEN)Done$(_END)"
 
 re:
