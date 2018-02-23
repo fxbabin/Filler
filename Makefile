@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/21 22:28:51 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/22 22:14:26 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ _V_SRCS			=	visu.c
 _LIBFT			=	libft.a
 HEADER_DIR		=	includes
 HEADER			=	$(HEADER_DIR)/filler.h
+SDL_HEADER_DIR	=	~/.brew/include/SDL2/
+SDL_LIB_DIR		=	~/.brew/lib
 
 SRCS_DIR		= .
 LIB_DIR			= libft
@@ -46,7 +48,7 @@ $(FILLER): $(HEADER) $(LIBFT) $(F_OBJS)
 		@echo "$(FILLER) : $(_GREEN)Done$(_END)"
 
 $(VISU): $(HEADER) $(LIBFT) $(V_OBJS)
-		@$(CC) $(CFLAGS) -o $(VISU) $(V_OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
+		@$(CC) $(CFLAGS) -o $(VISU) $(V_OBJS) -L$(LIB_DIR) -lft -L $(SDL_LIB_DIR) -lSDL2 -lSDL2_ttf -I $(HEADER_DIR)
 		@echo "$(VISU) : $(_GREEN)Done$(_END)"
 
 $(LIBFT):
