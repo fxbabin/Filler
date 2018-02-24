@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/23 16:08:39 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/02/23 23:13:48 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct		s_board
 	int				pos;
 	int				sc1;
 	int				sc2;
+	char			*ch1;
+	char			*ch2;
 }					t_board;
 
 typedef	struct		s_grid
