@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/22 22:14:26 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/25 00:59:49 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ FILLER			= fbabin.filler
 VISU			= visu
 
 CC				= gcc
-CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Werror -Wextra -g3
 
 #_SRCS			= \
 
 _F_SRCS			=	filler.c
-_V_SRCS			=	visu.c 
+_V_SRCS			=	visu.c visu_init.c visu_gridboard.c visu_2.c visu_utils.c
 
 _LIBFT			=	libft.a
 HEADER_DIR		=	includes
