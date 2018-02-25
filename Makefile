@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/25 01:18:25 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/25 17:46:23 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ all: $(FILLER) $(VISU)
 
 $(FILLER): $(HEADER) $(LIBFT) $(F_OBJS)
 		@$(CC) $(CFLAGS) -o $(FILLER) $(F_OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
+		@mv $(FILLER) resources/players/
 		@echo "$(FILLER) : $(_GREEN)Done$(_END)"
 
 $(VISU): $(HEADER) $(LIBFT) $(V_OBJS)
