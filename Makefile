@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/25 00:59:49 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/25 01:18:25 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ HEADER			=	$(HEADER_DIR)/filler.h
 SDL_HEADER_DIR	=	~/.brew/include/SDL2/
 SDL_LIB_DIR		=	~/.brew/lib
 
-SRCS_DIR		= .
+SRCS_DIR		= srcs
 LIB_DIR			= libft
 F_SRCS			= $(addprefix $(SRCS_DIR)/, $(_F_SRCS))
 V_SRCS			= $(addprefix $(SRCS_DIR)/, $(_V_SRCS))
