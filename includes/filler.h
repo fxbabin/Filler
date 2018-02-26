@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/25 22:02:56 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/02/26 22:49:52 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@
 typedef struct		s_filler
 {
 	char			*board;
+	char			*piece;
 	int				x;
 	int				y;
+	int				p_x;
+	int				p_y;
 	char			player;
 	char			adv;
 }					t_filler;
