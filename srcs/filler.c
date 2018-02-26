@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:59:08 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/25 22:20:53 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/02/26 13:53:28 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_display_board(t_filler *f)
 
 void	get_heatmap(t_filler *f)
 {
+	//t_list
 	int		i;
 
 	i = -1;
@@ -60,14 +61,11 @@ int		get_board2(t_filler *f)
 
 	i = -1;
 	line = NULL;
-	ft_dprintf(2, "qq\n");
 	if (sget_next_line(0, &line) == -1)
 		return (0);
-	ft_dprintf(2, "qq\n");
 	if (ft_strncmp(line, "    0", 5) != 0)
 		return (0);
 	ft_strdel(&line);
-	ft_dprintf(2, "qq\n");
 	while (++i < f->y && sget_next_line(0, &line) > 0)
 	{
 		if (!line || !(tab = ft_split(line, " ")))
@@ -76,7 +74,6 @@ int		get_board2(t_filler *f)
 		ft_free2((void**)tab);
 		ft_strdel(&line);
 	}
-	ft_dprintf(2, "qq\n");
 	return (1);
 }
 
@@ -86,7 +83,6 @@ int		get_board(t_filler *f)
 	char	*line;
 
 	line = NULL;
-	ft_dprintf(2, "oo\n");
 	while (sget_next_line(0, &line) > 0)
 	{
 		if (!ft_strncmp(line, "Plateau ", 8))
@@ -98,7 +94,6 @@ int		get_board(t_filler *f)
 	ft_strdel(&line);
 	if (tab_size(tab) != 3)
 		return (0);
-	ft_dprintf(2, "oo\n");
 	f->x = ft_atoi(tab[2]);
 	f->y = ft_atoi(tab[1]);
 	if (f->x == 0 || f->y == 0)
@@ -108,10 +103,8 @@ int		get_board(t_filler *f)
 		ft_strdel(&f->board);
 	if (!(f->board = (char*)ft_memalloc(((f->x * f->y) + 1) * sizeof(char))))
 		return (0);
-	ft_dprintf(2, "oo\n");
 	if (!get_board2(f))
 		return (0);
-	ft_dprintf(2, "oo\n");
 	get_heatmap(f);
 	ft_display_board(f);
 	return (1);

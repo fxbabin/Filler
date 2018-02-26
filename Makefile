@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/02/25 17:46:23 by fbabin           ###   ########.fr        #
+#    Updated: 2018/02/26 13:55:30 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ FILLER			= fbabin.filler
 VISU			= visu
 
 CC				= gcc
-CFLAGS			= -Wall -Werror -Wextra -g3
+CFLAGS			= -Wall -Werror -Wextra -g3 -fsanitize=address
 
 #_SRCS			= \
 

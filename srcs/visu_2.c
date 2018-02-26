@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 00:52:06 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/25 00:53:41 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/02/26 14:04:34 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@ void	extract_line(t_board *b, char *line)
 void	extract_score(t_board *b, char *line)
 {
 	char	**tab;
+	int		ret;
 
+	ret = 1;
 	if (!(tab = ft_split(line, " ")))
 		return ;
 	free(line);
 	b->sc1 = ft_atoi(tab[3]);
-	sget_next_line(0, &line);
 	ft_free2((void**)tab);
+	ret = sget_next_line(0, &line);
+	if (!ret)
+		return ;
 	if (!(tab = ft_split(line, " ")))
 		return ;
 	b->sc2 = ft_atoi(tab[3]);
