@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:30:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 01:22:39 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/01 14:35:28 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void		get_neighbours(t_filler *f, t_dot **visited, t_dot **ntv, t_dot *v)
 {
-	if ((v->x - 1 >= 0) && f->board[v->y][v->x - 1] == 46 && !ft_lstinpos(visited, v->x - 1, v->y) && !ft_lstinpos(ntv, v->x - 1, v->y))
+	if ((v->x - 1 >= 0) && f->board[v->y][v->x - 1] == 0 && !ft_lstinpos(visited, v->x - 1, v->y) && !ft_lstinpos(ntv, v->x - 1, v->y))
 		ft_dotlstpushback(ntv, v->x - 1, v->y);
-	if ((v->x + 1 < f->x) && f->board[v->y][v->x + 1] == 46 && !ft_lstinpos(visited, v->x + 1, v->y) && !ft_lstinpos(ntv, v->x + 1, v->y))
+	if ((v->x + 1 < f->x) && f->board[v->y][v->x + 1] == 0 && !ft_lstinpos(visited, v->x + 1, v->y) && !ft_lstinpos(ntv, v->x + 1, v->y))
 		ft_dotlstpushback(ntv, v->x + 1, v->y);
-	if (v->y - 1 >= 0 && f->board[v->y - 1][v->x] == 46 &&
+	if (v->y - 1 >= 0 && f->board[v->y - 1][v->x] == 0 &&
 			!ft_lstinpos(visited, v->x, v->y - 1) && !ft_lstinpos(ntv, v->x, v->y - 1))
 		ft_dotlstpushback(ntv, v->x, v->y - 1);
-	if (v->y + 1 < f->y && f->board[v->y + 1][v->x] == 46 &&
+	if (v->y + 1 < f->y && f->board[v->y + 1][v->x] == 0 &&
 			!ft_lstinpos(visited, v->x, v->y + 1) && !ft_lstinpos(ntv, v->x, v->y + 1))
 		ft_dotlstpushback(ntv, v->x, v->y + 1);
 }
@@ -51,17 +51,22 @@ void	set_colors(t_filler *f, int i)
 	int		x;
 	int		y;
 
-	x = -1;
 	y = -1;
 	inter = 510 / i;
 	n = (510 / inter) + (510 % inter) + 1;
-	if (!(f->colors = (int**)ft_int2alloc(x, 1)))
+	if (!(f->colors = (int**)ft_int2alloc(f->y, f->x)))
 		return ;
-	n = -255;
-	(void)f;
-	while (n < 255)
+	while (++y < f->y)
 	{
-		n += inter;
+		x = -1;
+		while (++x < f->x)
+		{
+			n = -255 + f->board[y][x] * inter;
+			if (n < 0)
+				f->colors[y][x] = ft_abs(n) * 65536 + (255 - ft_abs(n)) * 256;
+			else
+				f->colors[y][x] = ft_abs(n) + (255 - ft_abs(n)) * 256;
+		}
 	}
 }
 
@@ -97,7 +102,7 @@ void    create_heatmap(t_filler *f, t_dot **visited, t_dot **ntv)
 	{
 		expand_heatmap(f, visited, ntv, ++i);
 	}
-	ft_dprintf(2, "%d\n", i);
+	//ft_dprintf(2, "%d\n", i);
 	set_colors(f, i);
 }
 
@@ -165,9 +170,9 @@ void		get_heatmap(t_filler *f)
 		x = -1;
 		while (++x < f->x)
 		{
-			if (f->board[y][x] == f->adv)
+			if (f->board[y][x] == -2)
 			{
-				f->board[y][x] = -2;
+				//f->board[y][x] = -2;
 				//if (dot)
 				//	free(dot);
 				/*if (!(dot = (t_dot*)ft_memalloc(sizeof(t_dot))))
@@ -177,9 +182,9 @@ void		get_heatmap(t_filler *f)
 				ft_dotlstpushfront(&visited, x, y);
 				get_neighbours(f, &visited, &ntv, visited);
 			}
-			else if (f->board[y][x] == f->player)
+			else if (f->board[y][x] == -1)
 			{
-				f->board[y][x] = -1;
+				//f->board[y][x] = -1;
 				ft_dotlstpushfront(&visited, x, y);
 				/*if (!(dot = (t_dot*)ft_memalloc(sizeof(t_dot))))
 				  return ;

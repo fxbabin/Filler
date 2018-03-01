@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:16:32 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 01:19:30 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/01 20:48:37 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,15 @@ void	ft_display_board(t_filler *f)
 	{
 		x = -1;
 		while (++x < f->x)
-			ft_dprintf(2, "%3d", f->board[y][x]);
-		//ft_dprintf(2, "%k%3d%k", f->colors[y][x], f->board[y][x], EOC);
-
-		//if ((i % f->x) == 0 && i != 0)
-		ft_dprintf(2, "\n");
-		/*if (f->board[i] < 0)
 		{
-			if (f->board[i] == -2)
-				ft_dprintf(2, "%k%3c%k ", CYAN, f->adv, EOC);
-			if (f->board[i] == -1)
-				ft_dprintf(2, "%k%3c%k ", MAGENTA, f->player, EOC);
+			if (f->board[y][x] == -1)
+				ft_dprintf(2, "%k%3d%k", MAGENTA, f->board[y][x], EOC);
+			else if (f->board[y][x] == -2)
+				ft_dprintf(2, "%k%3d%k", CYAN, f->board[y][x], EOC);
+			else
+				ft_dprintf(2, "%k%3d%k", f->colors[y][x], f->board[y][x], EOC);
 		}
-		else
-			ft_dprintf(2, "%k%3d%k ", f->colors[(int)f->board[i] - 1], f->board[i], EOC);*/
+		ft_dprintf(2, "\n");
 	}
 	ft_dprintf(2, "\n");
 }
@@ -66,14 +61,12 @@ void	ft_lstdumpi(t_list **list)
 
 void    ft_display_piece(t_filler *f)
 {
-	int		i;
+	t_dot		*t;
 
-	i = -1;
-	while (f->piece[++i])
+	t = f->piece;
+	while (t)
 	{
-		if ((i % f->p_x) == 0 && i != 0)
-			ft_dprintf(2, "\n");
-		ft_dprintf(2, "%c", f->piece[i]);
+		ft_dprintf(2, "x %d y %d\n", t->x, t->y);
+		t = t->next;
 	}
-	ft_dprintf(2, "\n");
 }

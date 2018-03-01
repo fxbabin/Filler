@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 00:49:43 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/01 23:24:34 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ typedef struct		s_dot
 
 typedef struct		s_filler
 {
-	char			**board;
-	char			**piece;
+	int				**board;
+	t_dot			*piece;
 	int				**colors;
+	t_dot			result;
 	int				x;
 	int				y;
 	int				p_x;
