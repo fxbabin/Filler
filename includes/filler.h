@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/26 22:49:52 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/01 00:49:43 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,18 @@
 ** -------------------------------- STRUCTURES -------------------------------
 */
 
+typedef struct		s_dot
+{
+	int				x;
+	int				y;
+	struct s_dot	*next;
+}					t_dot;
+
 typedef struct		s_filler
 {
-	char			*board;
-	char			*piece;
+	char			**board;
+	char			**piece;
+	int				**colors;
 	int				x;
 	int				y;
 	int				p_x;
@@ -41,8 +49,6 @@ typedef struct		s_filler
 	char			player;
 	char			adv;
 }					t_filler;
-
-
 
 typedef struct		s_board
 {
@@ -86,6 +92,43 @@ typedef struct		s_env
 ** ---------------------------------- SOURCES ---------------------------------
 ** ----------------------------------------------------------------------------
 */
+
+void				get_dots(t_filler *f, int nb);
+int					get_piece2(t_filler *f);
+int					get_piece(t_filler *f);
+int					get_board2(t_filler *f);
+int					get_board(t_filler *f);
+int					get_player(t_filler *f);
+
+
+
+t_dot				*ft_dotlstcreate(int x, int y);
+void				ft_dotlstpushback(t_dot **begin_list, int x, int y);
+void				ft_dotlstpushfront(t_dot **begin_list, int x, int y);
+/*
+** ---------------------------------- HEATMAP -------------------------------
+*/
+
+void				get_neighbours(t_filler *f, t_dot **visited, t_dot **ntv, t_dot *v);
+void				dd(t_filler *f, t_list **visited, t_list **ntv, int i);
+void				set_colors(t_filler *f, int i);
+void				da(t_filler *f, t_list **visited, t_list **ntv);
+void				get_heatmap(t_filler *f);
+
+/*
+** ---------------------------------- DISPLAY -------------------------------
+*/
+
+void				ft_display_board(t_filler *f);
+void				ft_lstdumpi(t_list **list);
+void				ft_display_piece(t_filler *f);
+
+/*
+** ---------------------------------- UTILS ----------------------------------
+*/
+
+int					tab_size(char **tab);
+int					ft_lstinpos(t_dot **begin_list, int x, int y);
 
 /*
 ** -------------------------------- VISU_FILLER -------------------------------

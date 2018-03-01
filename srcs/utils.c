@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 22:59:08 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/28 21:52:52 by fbabin           ###   ########.fr       */
+/*   Created: 2018/02/28 21:28:36 by fbabin            #+#    #+#             */
+/*   Updated: 2018/03/01 00:42:28 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		main(void)
+int		tab_size(char **tab)
 {
-	t_filler	f;
+	int		i;
 
-	ft_bzero(&f, sizeof(t_filler));
-	if (!get_player(&f))
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+int		ft_lstinpos(t_dot **begin_list, int x, int y)
+{
+	t_dot		*tmp;
+
+	if (!begin_list)
 		return (0);
-	while (1)
+	tmp = *begin_list;
+	while (tmp)
 	{
-		if (!f.x && !get_board(&f))
-			return (-1);
-		return (0);
+		if (tmp->x == x && tmp->y == y)
+			return (1);
+		tmp = tmp->next;
 	}
 	return (0);
 }
