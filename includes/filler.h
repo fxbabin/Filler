@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 23:24:34 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/02 18:29:17 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ typedef struct		s_filler
 	int				**board;
 	t_dot			*piece;
 	int				**colors;
-	t_dot			result;
+	t_dot			*result;
+	int				min_score;
 	int				x;
 	int				y;
 	int				p_x;
 	int				p_y;
+	int				m_x;
+	int				m_y;
 	char			player;
 	char			adv;
 }					t_filler;
@@ -101,6 +104,9 @@ int					get_board2(t_filler *f);
 int					get_board(t_filler *f);
 int					get_player(t_filler *f);
 
+void				ft_dotlstdel(t_dot **alst);
+void				get_pos(t_filler *f);
+void				check_score(t_filler *f, int x, int y);
 
 
 t_dot				*ft_dotlstcreate(int x, int y);

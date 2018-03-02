@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:19:37 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 22:58:50 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/02 22:47:51 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void		reduce_piece(t_filler *f)
 	int		min_x;
 	int		min_y;
 
-	min_x = ((t_dot*)f->piece)->x;
-	min_y = ((t_dot*)f->piece)->y;
+	min_x = 9999;
+	min_y = 9999;
 	d = f->piece;
 	while (d)
 	{
@@ -47,8 +47,8 @@ void		reduce_piece(t_filler *f)
 			min_y = d->y;
 		d = d->next;
 	}
-	p_x = min_x;
-	p_y	= min_y;
+	f->m_x = min_x;
+	f->m_y	= min_y;
 	d = f->piece;
 	while (d)
 	{
@@ -66,6 +66,7 @@ int			get_piece2(t_filler *f)
 
 	i = -1;
 	line = NULL;
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
 	while (++i < f->p_y && sget_next_line(0, &line) > 0)
 	{
 
@@ -77,6 +78,7 @@ int			get_piece2(t_filler *f)
 		}
 		ft_strdel(&line);
 	}
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
 	return (1);
 }
 
@@ -88,6 +90,7 @@ int			get_piece(t_filler *f)
 	line = NULL;
 	while (sget_next_line(0, &line) > 0)
 	{
+		//ft_dprintf(2, "%s\n", line);
 		if (!ft_strncmp(line, "Piece ", 6))
 			break ;
 		ft_strdel(&line);
@@ -97,13 +100,18 @@ int			get_piece(t_filler *f)
 	ft_strdel(&line);
 	if (tab_size(tab) != 3)
 		return (0);
+	//ft_dprintf(2, "here\n");
 	f->p_x = ft_atoi(tab[2]);
 	f->p_y = ft_atoi(tab[1]);
 	ft_free2((void**)tab);
 	if (f->x == 0 || f->y == 0)
 		return (0);
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
+	//ft_dprintf(2, "here\n");
 	get_piece2(f);
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
 	reduce_piece(f);
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
 	return (1);
 }
 
@@ -129,12 +137,12 @@ int			get_board2(t_filler *f)
 		x = -1;
 		while (++x < f->x)
 		{
-			if (tab[1][x] == f->player)
+			if (tab[1][x] == f->player || tab[1][x] == f->player + 32)
 				f->board[i][x] = -1;
-			else if (tab[1][x] == f->adv)
+			else if (tab[1][x] == f->adv || tab[1][x] == f->adv + 32)
 				f->board[i][x] = -2;
 			else
-				f->board[i][x] = ft_atoi(&tab[1][x]);
+				f->board[i][x] = 0; //ft_atoi(&tab[1][x]);
 			//ft_dprintf(2, "%d\n", *f->board[i][x]);
 		}
 		//ft_memcpy(f->board[i], tab[1], f->x);
@@ -163,6 +171,7 @@ int			get_board(t_filler *f)
 		return (0);
 	f->x = ft_atoi(tab[2]);
 	f->y = ft_atoi(tab[1]);
+	//ft_dprintf(2, "%d %d\n", f->x, f->y);
 	if (f->x == 0 || f->y == 0)
 		return (0);
 	ft_free2((void**)tab);
@@ -176,8 +185,10 @@ int			get_board(t_filler *f)
 	ft_dprintf(2, "\e[1;1H\e[2J");
 	ft_display_board(f);
 	get_piece(f);
-	ft_display_piece(f);
-	/*get_dots(f, 0);*/
+	//ft_display_piece(f);
+	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
+	get_pos(f);
+	ft_dotlstdel(&f->piece);
 	return (1);
 }
 

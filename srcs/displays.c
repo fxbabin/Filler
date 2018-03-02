@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:16:32 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 20:48:37 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/02 22:59:26 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void	ft_display_board(t_filler *f)
 	int		y;
 
 	y = -1;
-	ft_dprintf(2, "%k------------- HEATMAP -------------%k\n\n", YELLOW, EOC);
+	nanosleep((const struct timespec[]){{0, 10000000L}}, NULL);
+	ft_dprintf(2, "%k------------- HEATMAP -------------%k\n\n", LYELLOW, EOC);
 	while (++y < f->y)
 	{
+
+		ft_dprintf(2, "\n");
 		x = -1;
 		while (++x < f->x)
 		{
@@ -33,6 +36,7 @@ void	ft_display_board(t_filler *f)
 		}
 		ft_dprintf(2, "\n");
 	}
+	nanosleep((const struct timespec[]){{0, 10000000L}}, NULL);
 	ft_dprintf(2, "\n");
 }
 

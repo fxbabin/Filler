@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:30:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/01 14:35:28 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/02 18:36:06 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void		get_neighbours(t_filler *f, t_dot **visited, t_dot **ntv, t_dot *v)
 {
-	if ((v->x - 1 >= 0) && f->board[v->y][v->x - 1] == 0 && !ft_lstinpos(visited, v->x - 1, v->y) && !ft_lstinpos(ntv, v->x - 1, v->y))
+	if ((v->x - 1 >= 0) && f->board[v->y][v->x - 1] >= 0 && !ft_lstinpos(visited, v->x - 1, v->y) && !ft_lstinpos(ntv, v->x - 1, v->y))
 		ft_dotlstpushback(ntv, v->x - 1, v->y);
-	if ((v->x + 1 < f->x) && f->board[v->y][v->x + 1] == 0 && !ft_lstinpos(visited, v->x + 1, v->y) && !ft_lstinpos(ntv, v->x + 1, v->y))
+	if ((v->x + 1 < f->x) && f->board[v->y][v->x + 1] >= 0 && !ft_lstinpos(visited, v->x + 1, v->y) && !ft_lstinpos(ntv, v->x + 1, v->y))
 		ft_dotlstpushback(ntv, v->x + 1, v->y);
-	if (v->y - 1 >= 0 && f->board[v->y - 1][v->x] == 0 &&
+	if (v->y - 1 >= 0 && f->board[v->y - 1][v->x] >= 0 &&
 			!ft_lstinpos(visited, v->x, v->y - 1) && !ft_lstinpos(ntv, v->x, v->y - 1))
 		ft_dotlstpushback(ntv, v->x, v->y - 1);
-	if (v->y + 1 < f->y && f->board[v->y + 1][v->x] == 0 &&
+	if (v->y + 1 < f->y && f->board[v->y + 1][v->x] >= 0 &&
 			!ft_lstinpos(visited, v->x, v->y + 1) && !ft_lstinpos(ntv, v->x, v->y + 1))
 		ft_dotlstpushback(ntv, v->x, v->y + 1);
 }
@@ -151,6 +151,21 @@ void            ft_dotlstpushfront(t_dot **begin_list, int x, int y)
 	{
 		t = ft_dotlstcreate(x, y);
 		(*begin_list) = t;
+	}
+}
+
+void    ft_dotlstdel(t_dot **alst)
+{
+	t_dot          *tmp;
+
+	if (!alst)
+		return ;
+	while (*alst)
+	{
+		tmp = (*alst)->next;
+		free(*alst);
+		*alst = NULL;
+		*alst = tmp;
 	}
 }
 
