@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:28:55 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/02 23:07:42 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/03 18:18:52 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void    check_score(t_filler *f, int x, int y)
 	{
 		if (y + tmp->y < f->y && x + tmp->x < f->x)
 		{
-			if (y + f->p_y > f->y - 1 || x + f->p_x > f->x - 1)
+			if (y + f->p_y > f->y || x + f->p_x > f->x)
 				score += 9999;
 			else if (y - f->m_y < 0 || x - f->m_x < 0)
 				score += 9999;

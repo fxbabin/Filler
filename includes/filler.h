@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/02 18:29:17 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/03 17:33:18 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int					get_player(t_filler *f);
 void				ft_dotlstdel(t_dot **alst);
 void				get_pos(t_filler *f);
 void				check_score(t_filler *f, int x, int y);
-
+void				ft_display_dotlst(t_dot **f);
 
 t_dot				*ft_dotlstcreate(int x, int y);
 void				ft_dotlstpushback(t_dot **begin_list, int x, int y);

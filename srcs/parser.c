@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:19:37 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/02 22:47:51 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/03 16:58:07 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ int			get_board(t_filler *f)
 	get_piece(f);
 	//ft_display_piece(f);
 	//ft_dprintf(2, "%d %d\n", f->p_x, f->p_y);
+	//ft_printf("ff\n");
 	get_pos(f);
 	ft_dotlstdel(&f->piece);
 	return (1);
