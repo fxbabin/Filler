@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:30:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/03 19:55:14 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/03 23:39:22 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		get_scores(t_filler *f, t_dot *adv)
 				if (dist > max)
 					max = dist;
 				if (dist <= 2)
-					dist = 2;
+					dist = 3;
 				f->board[y][x] = dist;
 			}
 		}
@@ -104,7 +104,7 @@ void		get_heatmap(t_filler *f)
 				ft_dotlstpushback(&adv, x, y);
 		}
 	}
-	ft_display_dotlst(&adv);
+	//ft_display_dotlst(&adv);
 	get_scores(f, adv);
 	ft_dotlstdel(&adv);
 }

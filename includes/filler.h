@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/03 17:33:18 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/03 23:24:09 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct		s_filler
 	int				p_y;
 	int				m_x;
 	int				m_y;
+	int				max_x;
+	int				max_y;
 	char			player;
 	char			adv;
 }					t_filler;
@@ -128,7 +130,7 @@ void				get_heatmap(t_filler *f);
 
 void				ft_display_board(t_filler *f);
 void				ft_lstdumpi(t_list **list);
-void				ft_display_piece(t_filler *f);
+void				ft_display_piece(t_filler *f, t_dot **d);
 
 /*
 ** ---------------------------------- UTILS ----------------------------------
