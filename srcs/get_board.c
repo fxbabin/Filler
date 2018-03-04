@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:28:52 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 14:29:58 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 14:59:54 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int			get_boardbis(t_filler *f)
 
 int			get_board(t_filler *f)
 {
-	char    **tab;
-	char    *line;
+	char	**tab;
+	char	*line;
 
 	line = NULL;
 	while (sget_next_line(0, &line) > 0)
