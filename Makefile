@@ -6,7 +6,7 @@
 #    By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 22:51:42 by fbabin            #+#    #+#              #
-#    Updated: 2018/03/03 16:34:02 by fbabin           ###   ########.fr        #
+#    Updated: 2018/03/04 14:32:02 by fbabin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS			= -Wall -Werror -Wextra
 #_SRCS			= \
 
 _F_SRCS			=	filler.c parser.c utils.c displays.c heatmap.c solver.c \
-					dotlst.c
+					dotlst.c get_board.c
 _V_SRCS			=	visu.c visu_init.c visu_gridboard.c visu_2.c visu_utils.c
 
 _LIBFT			=	libft.a
@@ -46,7 +46,6 @@ all: $(FILLER) $(VISU)
 
 $(FILLER): $(HEADER) $(LIBFT) $(F_OBJS)
 		@$(CC) $(CFLAGS) -o $(FILLER) $(F_OBJS) -L$(LIB_DIR) -lft -I $(HEADER_DIR)
-		@mv $(FILLER) resources/players/
 		@echo "$(FILLER) : $(_GREEN)Done$(_END)"
 
 $(VISU): $(HEADER) $(LIBFT) $(V_OBJS)

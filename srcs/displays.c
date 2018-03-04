@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:16:32 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/03 21:20:18 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 13:58:57 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,24 @@ void	ft_display_board(t_filler *f)
 	int		y;
 
 	y = -1;
-	//nanosleep((const struct timespec[]){{0, 50000000L}}, NULL);
-	ft_dprintf(2, "%k------------- HEATMAP -------------%k\n\n   ", LYELLOW, EOC);
+	ft_dprintf(2, "%k------------- HEATMAP -------------%k\n\n   ",
+		LYELLOW, EOC);
 	x = -1;
 	while (++x < f->x)
 		ft_dprintf(2, "%+k%3d%k", EOC, x, RESET);
 	while (++y < f->y)
 	{
-
-		ft_dprintf(2, "\n");
 		x = -1;
-		ft_dprintf(2, "%+k%3d%k", EOC, y, RESET);
+		ft_dprintf(2, "\n%+k%3d%k", EOC, y, RESET);
 		while (++x < f->x)
 		{
 			if (f->board[y][x] == -1)
-				ft_dprintf(2, "%k%3d%k", MAGENTA, f->board[y][x], EOC);
+				ft_dprintf(2, "%k  △%k", MAGENTA, EOC);
 			else if (f->board[y][x] == -2)
-				ft_dprintf(2, "%k%3d%k", CYAN, f->board[y][x], EOC);
+				ft_dprintf(2, "%k  ▽%k", CYAN, EOC);
 			else
 				ft_dprintf(2, "%k%3d%k", f->colors[y][x], f->board[y][x], EOC);
 		}
-		//ft_dprintf(2, "\n");
 	}
 	nanosleep((const struct timespec[]){{0, 50000000L}}, NULL);
 	ft_dprintf(2, "\n");
@@ -67,7 +64,7 @@ void	ft_lstdumpi(t_list **list)
 	*list = l;
 }
 
-void    ft_display_dotlst(t_dot **f)
+void	ft_display_dotlst(t_dot **f)
 {
 	t_dot		*t;
 

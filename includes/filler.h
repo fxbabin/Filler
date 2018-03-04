@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/03 23:24:09 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 14:22:36 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct		s_env
 void				get_dots(t_filler *f, int nb);
 int					get_piece2(t_filler *f);
 int					get_piece(t_filler *f);
-int					get_board2(t_filler *f);
+int					get_board2(t_filler *f, char *line, int i, int x);
 int					get_board(t_filler *f);
 int					get_player(t_filler *f);
 

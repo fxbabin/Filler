@@ -6,13 +6,13 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:30:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/03 23:39:22 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 00:12:05 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	set_colors(t_filler *f, int i)
+void		set_colors(t_filler *f, int i)
 {
 	int		inter;
 	int		n;
@@ -38,7 +38,7 @@ void	set_colors(t_filler *f, int i)
 	}
 }
 
-int		get_mindist(t_filler *f, t_dot *adv, int x, int y)
+int			get_mindist(t_filler *f, t_dot *adv, int x, int y)
 {
 	t_dot	*tmp;
 	int		dist;
@@ -104,7 +104,6 @@ void		get_heatmap(t_filler *f)
 				ft_dotlstpushback(&adv, x, y);
 		}
 	}
-	//ft_display_dotlst(&adv);
 	get_scores(f, adv);
 	ft_dotlstdel(&adv);
 }

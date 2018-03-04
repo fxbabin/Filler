@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 00:37:21 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/25 01:03:14 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 14:46:55 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				init_env(t_env *env)
 {
 	TTF_Init();
 	env->quit = 0;
-	env->font = TTF_OpenFont("./K.ttf", 200);
+	env->font = TTF_OpenFont("./includes/K.ttf", 200);
 	env->white = init_color(255, 255, 255, 255);
 	env->lred = init_color(243, 102, 77, 255);
 	env->lgreen = init_color(29, 189, 36, 255);
