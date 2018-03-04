@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:28:52 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 14:59:54 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 16:29:25 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int			get_boardbis(t_filler *f)
 	get_piece(f);
 	get_pos(f);
 	ft_dotlstdel(&f->piece);
+	ft_dotlstdel(&f->result);
+	ft_free2((void**)f->board);
 	return (1);
 }
 
@@ -86,6 +88,7 @@ int			get_board(t_filler *f)
 		return (0);
 	if (!get_boardbis(f))
 		return (0);
+	ft_free2((void**)f->colors);
 	ft_free2((void**)tab);
 	return (1);
 }

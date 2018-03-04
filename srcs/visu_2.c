@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 00:52:06 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/26 14:04:34 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 16:55:16 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	extract_score(t_board *b, char *line)
 		return ;
 	b->sc2 = ft_atoi(tab[3]);
 	ft_free2((void**)tab);
+	ft_strdel(&line);
 }
 
 void	get_rectcoords(SDL_Rect *rect, int x, int y, int sq)

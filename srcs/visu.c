@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 22:01:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/26 14:07:20 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 16:54:05 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,31 @@ void	get_boardinfo(t_board *b)
 
 void	main_end2(t_env *env, t_board *b)
 {
-	char	*str;
+	char	*tmp;
+	char	strr[48];
 
-	str = ft_strjoin(b->ch1, " : ");
-	str = ft_strjoinclr(str, ft_itoa(b->sc1), 2);
-	env->surface = TTF_RenderText_Blended(env->font, str, env->white);
-	free(str);
+	ft_bzero(&strr, 48);
+	ft_strcat((char*)&strr, b->ch1);
+	ft_strcat((char*)&strr, " : ");
+	tmp = ft_itoa(b->sc1);
+	ft_strcat((char*)&strr, tmp);
+	ft_strdel(&tmp);
+	env->surface = TTF_RenderText_Blended(env->font, strr, env->white);
 	env->mess = SDL_CreateTextureFromSurface(env->renderer, env->surface);
 	env->m_rect = init_rect(250, 1000, 150, 60);
 	SDL_RenderCopy(env->renderer, env->mess, NULL, &env->m_rect);
-	SDL_FreeSurface(env->surface);
-	SDL_DestroyTexture(env->mess);
-	str = ft_strjoin(b->ch2, " : ");
-	str = ft_strjoinclr(str, ft_itoa(b->sc2), 2);
-	env->surface = TTF_RenderText_Blended(env->font, str, env->white);
-	free(str);
+	free_surfacetexture(env);
+	ft_bzero(&strr, 48);
+	ft_strcat((char*)&strr, b->ch2);
+	ft_strcat((char*)&strr, " : ");
+	tmp = ft_itoa(b->sc2);
+	ft_strcat((char*)&strr, tmp);
+	ft_strdel(&tmp);
+	env->surface = TTF_RenderText_Blended(env->font, strr, env->white);
 	env->mess = SDL_CreateTextureFromSurface(env->renderer, env->surface);
-	SDL_FreeSurface(env->surface);
 	env->m_rect = init_rect(800, 1000, 150, 60);
 	SDL_RenderCopy(env->renderer, env->mess, NULL, &env->m_rect);
-	SDL_DestroyTexture(env->mess);
-	SDL_RenderPresent(env->renderer);
+	free_surfacetexture(env);
 }
 
 void	main_end(t_env *env, t_board *b, t_grid *grid)
@@ -85,6 +89,7 @@ void	main_end(t_env *env, t_board *b, t_grid *grid)
 		SDL_FreeSurface(env->surface);
 		SDL_DestroyTexture(env->mess);
 		main_end2(env, b);
+		SDL_RenderPresent(env->renderer);
 	}
 }
 
@@ -136,6 +141,7 @@ int		main(void)
 				env.quit = 1;
 		}
 	}
-	close_sdlttf(&env);
+	close_sdlttf(&env, &b);
+	sleep(60);
 	return (0);
 }

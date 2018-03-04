@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 00:37:21 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 14:46:55 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 16:46:18 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void			free_surfacetexture(t_env *env)
 	SDL_DestroyTexture(env->mess);
 }
 
-void			close_sdlttf(t_env *env)
+void			close_sdlttf(t_env *env, t_board *b)
 {
-	if (env->renderer)
-		SDL_DestroyRenderer(env->renderer);
-	if (env->window)
-		SDL_DestroyWindow(env->window);
+	if (b->board)
+		ft_strdel(&b->board);
+	SDL_DestroyRenderer(env->renderer);
+	SDL_DestroyWindow(env->window);
 	TTF_Quit();
 	SDL_Quit();
 }

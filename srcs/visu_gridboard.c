@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 00:44:03 by fbabin            #+#    #+#             */
-/*   Updated: 2018/02/25 00:47:54 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 17:04:25 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	update_board(t_board *b, char *line)
 	if (!(tab = ft_split(line, " ")))
 		return ;
 	extract_line(b, tab[1]);
+	ft_free2((void**)tab);
 	while (sget_next_line(0, &line) > 0)
 	{
 		if (!ft_strncmp(line, "Piece", 5))
@@ -30,8 +31,9 @@ void	update_board(t_board *b, char *line)
 			return ;
 		extract_line(b, tab[1]);
 		ft_free2((void**)tab);
-		free(line);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 }
 
 void	update_grid(SDL_Renderer *renderer, t_grid *grid, char *board)
@@ -111,9 +113,9 @@ void	update_disp(t_env *env, t_board *b, t_grid *grid)
 			draw_grid(env->renderer, grid);
 			SDL_RenderPresent(env->renderer);
 			SDL_Delay(5);
-			free(line);
+			ft_strdel(&line);
 			break ;
 		}
-		free(line);
+		ft_strdel(&line);
 	}
 }

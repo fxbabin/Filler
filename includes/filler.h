@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 14:22:36 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 16:40:30 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ void				ft_dotlstpushfront(t_dot **begin_list, int x, int y);
 ** ---------------------------------- HEATMAP -------------------------------
 */
 
-void				get_neighbours(t_filler *f, t_dot **visited, t_dot **ntv, t_dot *v);
+void				get_neighbours(t_filler *f, t_dot **visited, t_dot **ntv,
+						t_dot *v);
 void				dd(t_filler *f, t_list **visited, t_list **ntv, int i);
 void				set_colors(t_filler *f, int i);
 void				da(t_filler *f, t_list **visited, t_list **ntv);
@@ -147,7 +148,7 @@ SDL_Color			init_color(int r, int g, int b, int op);
 SDL_Rect			init_rect(int x, int y, int w, int h);
 int					init_env(t_env *env);
 void				free_surfacetexture(t_env *env);
-void				close_sdlttf(t_env *env);
+void				close_sdlttf(t_env *env, t_board *b);
 
 void				update_board(t_board *b, char *line);
 void				update_grid(SDL_Renderer *renderer, t_grid *grid,
