@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:58:23 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 16:40:30 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/03/04 20:38:10 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void				get_rectcoords(SDL_Rect *rect, int x, int y, int sq);
 void				set_color(SDL_Renderer *renderer, char c);
 char				*extract_name(char *line);
 
+void				the_norm(t_env *env);
 void				ft_bchar(void *s, size_t n, char c);
 int					check_plateau(char *line, t_board *b);
 void				display_board(t_board *b);
