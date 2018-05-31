@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 21:16:32 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 17:49:43 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/05/31 17:48:40 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_display_board(t_filler *f)
 		}
 	}
 	ft_dprintf(2, "\n");
+	//nanosleep((const struct timespec[]){{0, 50000000L}}, NULL);
 }
 
 void	ft_lstdumpi(t_list **list)
