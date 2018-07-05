@@ -6,7 +6,7 @@
 /*   By: fbabin <fbabin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 22:01:11 by fbabin            #+#    #+#             */
-/*   Updated: 2018/03/04 20:40:08 by fbabin           ###   ########.fr       */
+/*   Updated: 2018/07/05 17:32:05 by fbabin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ int		main(void)
 		while (SDL_PollEvent(&env.event))
 		{
 			if (env.event.type == SDL_QUIT)
+				env.quit = 1;
+			if (SDL_KEYDOWN && (env.event.key.keysym.sym == SDLK_ESCAPE))
 				env.quit = 1;
 		}
 	}
